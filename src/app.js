@@ -1,4 +1,11 @@
 "use strict"
+
+// REACT
+import React from 'react';
+import {render} from 'react-dom';
+import {Provider} from 'react-redux';
+
+
 import {applyMiddleware, createStore} from 'redux';
 import logger from 'redux-logger';
 
@@ -13,10 +20,13 @@ import {postBooks, deleteBooks, updateBooks} from './actions/booksActions';
 const middleware = applyMiddleware(logger);
 const store = createStore(reducers, middleware);
 
-// store.subscribe(function(){
-// 	console.log('current state is: ', store.getState());
-// 	// console.log('current price: ', store.getState()[1].price);
-// })
+import BooksList from './components/pages/bookslist';
+
+render(
+	<Provider store={store}>
+		<BooksList />
+	</Provider>, document.getElementById('app')
+);
 
 // STEP 2 create and dispatch actions
 // POSTBOOK
@@ -33,21 +43,21 @@ store.dispatch(postBooks(
 		description: 'this is the second book description',
 		price: 50
 	}]
-))
+	))
 
-// DELETE a book
-store.dispatch(deleteBooks(
-	{id: 1}
-))
+// // DELETE a book
+// store.dispatch(deleteBooks(
+// 	{id: 1}
+// 	))
 
-// UPDATE a book
-store.dispatch(updateBooks(
-	{
-		id: 2,
-		title:'Learn React in 24h'
-	}
-))
+// // UPDATE a book
+// store.dispatch(updateBooks(
+// {
+// 	id: 2,
+// 	title:'Learn React in 24h'
+// }
+// ))
 
-//-->> CART ACTIONS <<--
-// ADD TO CART
-store.dispatch(addToCart([{id: 1}]))
+// //-->> CART ACTIONS <<--
+// // ADD TO CART
+// store.dispatch(addToCart([{id: 1}]))
