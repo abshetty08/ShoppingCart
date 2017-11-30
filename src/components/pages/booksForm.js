@@ -22,7 +22,6 @@ class BooksForm extends React.Component{
 		return(
 			<Well>
 				<Panel>
-
 					<FormGroup controlId="title">
 						<ControlLabel>Title</ControlLabel>
 						<FormControl
@@ -30,7 +29,6 @@ class BooksForm extends React.Component{
 							placeholder="Enter Title"
 							ref="title" />
 					</FormGroup>
-
 					<FormGroup controlId="description">
 						<ControlLabel>Description</ControlLabel>
 						<FormControl
@@ -38,7 +36,6 @@ class BooksForm extends React.Component{
 							placeholder="Enter Description"
 							ref="description" />
 					</FormGroup>
-
 					<FormGroup controlId="price">
 						<ControlLabel>Price</ControlLabel>
 						<FormControl
