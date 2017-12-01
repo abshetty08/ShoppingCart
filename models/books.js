@@ -9,7 +9,6 @@ var booksSchema = mongoose.Schema({
 	price: Number
 });
 
-var Books = mongoose.model('Books',
-	booksSchema);
+var Books = mongoose.model('Books', booksSchema);
 
 module.exports = Books;

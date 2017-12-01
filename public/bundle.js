@@ -11483,10 +11483,14 @@ var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// POST A BOOK
+// GET A BOOK
 function getBooks() {
-	return {
-		type: "GET_BOOK"
+	return function (dispatch) {
+		_axios2.default.get("/books").then(function (response) {
+			dispatch({ type: "GET_BOOKS", payload: response.data });
+		}).catch(function (err) {
+			dispatch({ type: "GET_BOOKS_REJECTED", payload: err });
+		});
 	};
 }
 
@@ -11496,16 +11500,20 @@ function postBooks(book) {
 		_axios2.default.post("/books", book).then(function (response) {
 			dispatch({ type: "POST_BOOK", payload: response.data });
 		}).catch(function (err) {
-			dispatch({ type: "POST_BOOK_REJECTED", payload: "there was an error while posting a new book" });
+			dispatch({ type: "POST_BOOK_REJECTED",
+				payload: "there was an error while posting a new book" });
 		});
 	};
 }
 
 // DELETE A BOOK
-function deleteBooks(_id) {
-	return {
-		type: "DELETE_BOOK",
-		payload: _id
+function deleteBooks(id) {
+	return function (dispatch) {
+		_axios2.default.delete("/books/" + id).then(function (response) {
+			dispatch({ type: "DELETE_BOOK", payload: id });
+		}).catch(function (err) {
+			dispatch({ type: "DELETE_BOOK_REJECTED", payload: err });
+		});
 	};
 }
 
@@ -38277,24 +38285,14 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 function booksReducers() {
 	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-		books: [{
-			_id: 1,
-			title: 'this is the book title',
-			description: 'this is the book description',
-			price: 44.33
-		}, {
-			_id: 2,
-			title: 'this is the second book title',
-			description: 'this is the second book description',
-			price: 55
-		}]
+		books: []
 	};
 	var action = arguments[1];
 
 	switch (action.type) {
 
 		case "GET_BOOK":
-			return _extends({}, state, { books: [].concat(_toConsumableArray(state.books)) });
+			return _extends({}, state, { books: [].concat(_toConsumableArray(action.payload)) });
 			break;
 
 		case "POST_BOOK":
