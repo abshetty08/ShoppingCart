@@ -19,6 +19,7 @@ class BooksList extends React.Component{
 
 	render(){
 		const booksList =  this.props.books.map(function(booksArr){
+			console.log("HOW BOOKS ARRAY LOOKS LIKE? -->>>>: ", booksArr);
 			return(
 				<Col xs={12} sm={6} md={4} key={booksArr._id}>
 				<BookItem

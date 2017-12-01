@@ -2,7 +2,7 @@
 
 //BOOKS REDUCERS
 export function booksReducers (state={
-	books:[ ]
+	books:[]
 }, action){
 	switch(action.type){
 		
