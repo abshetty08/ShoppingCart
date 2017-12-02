@@ -36,7 +36,7 @@ app.post('/cart', function(req, res){
   req.session.cart = cart;
   req.session.save(function(err){
     if(err){
-      throw err;
+      console.log('# API POST CART SESSION: ', err);
     }
     res.json(req.session.cart);
   })
@@ -60,7 +60,7 @@ app.post('/books', function(req, res){
   var book = req.body;
   Books.create(book, function(err, books){
     if(err){
-      throw err;
+      console.log('# API POST BOOKS: ', err);
     }
     res.json(books);
   })
@@ -70,7 +70,7 @@ app.post('/books', function(req, res){
 app.get('/books', function(req, res){
   Books.find(function(err, books){
     if(err){
-      throw err;
+      console.log('# API GET BOOKS: ', err);
     }
     res.json(books);
   })
@@ -81,7 +81,7 @@ app.delete('/books/:_id', function(req, res){
   var query = {_id: req.params._id};
   Books.remove(query, function(err, books){
     if(err){
-      throw err;
+      console.log('# API DELETE BOOKS: ', err);
     }
     res.json(books);
   })
@@ -106,7 +106,7 @@ var options = {new: true};
 Books.findOneAndUpdate(query, update,
   options, function(err, books){
     if(err){
-      throw err;
+      console.log('# API UPDATE BOOKS: ', err);
     }
     res.json(books);
   })
