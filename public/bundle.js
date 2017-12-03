@@ -11419,6 +11419,7 @@ function postBooks(book) {
 	return function (dispatch) {
 		_axios2.default.post("/api/books", book).then(function (response) {
 			dispatch({ type: "POST_BOOK", payload: response.data });
+			console.log(payload);
 		}).catch(function (err) {
 			dispatch({ type: "POST_BOOK_REJECTED",
 				payload: "there was an error while posting a new book" });
@@ -23015,7 +23016,9 @@ var BooksForm = function (_React$Component) {
 	_createClass(BooksForm, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
+
 			this.props.getBooks();
+
 			//GET IMAGES FROM API
 			_axios2.default.get('/api/images').then(function (response) {
 				this.setState({ images: response.data });
@@ -23029,7 +23032,7 @@ var BooksForm = function (_React$Component) {
 			var book = [{
 				title: (0, _reactDom.findDOMNode)(this.refs.title).value,
 				description: (0, _reactDom.findDOMNode)(this.refs.description).value,
-				images: (0, _reactDom.findDOMNode)(this.refs.images).value,
+				images: (0, _reactDom.findDOMNode)(this.refs.image).value,
 				price: (0, _reactDom.findDOMNode)(this.refs.price).value
 			}];
 			this.props.postBooks(book);
@@ -23094,7 +23097,7 @@ var BooksForm = function (_React$Component) {
 							_react2.default.createElement(
 								_reactBootstrap.InputGroup,
 								null,
-								_react2.default.createElement(_reactBootstrap.FormControl, { type: 'text', ref: 'images', value: this.state.img }),
+								_react2.default.createElement(_reactBootstrap.FormControl, { type: 'text', ref: 'image', value: this.state.img }),
 								_react2.default.createElement(
 									_reactBootstrap.DropdownButton,
 									{
@@ -38349,8 +38352,6 @@ function booksReducers() {
 			break;
 
 		case "POST_BOOK":
-			// let books = state.books.concat(action.payload);
-			// return {books};
 			return _extends({}, state, { books: [].concat(_toConsumableArray(state.books), _toConsumableArray(action.payload)), msg: 'Saved! Click to continue', style: 'success', validation: 'success' });
 			break;
 

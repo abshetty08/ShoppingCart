@@ -19,7 +19,9 @@ class BooksForm extends React.Component{
 	}
 
 	componentDidMount(){
+		
 		this.props.getBooks();
+		
 		//GET IMAGES FROM API
 		axios.get('/api/images')
 			.then(function(response){
@@ -30,12 +32,11 @@ class BooksForm extends React.Component{
 			}.bind(this))
 	}
 
-
 	handleSubmit(){
 		const book=[{
 			title: findDOMNode(this.refs.title).value,
 			description: findDOMNode(this.refs.description).value,
-			images:findDOMNode(this.refs.images).value,
+			images:findDOMNode(this.refs.image).value,
 			price: findDOMNode(this.refs.price).value,
 		}]
 		this.props.postBooks(book);
@@ -73,7 +74,7 @@ class BooksForm extends React.Component{
 		const imgList =
 		this.state.images.map(function(imgArr, i){
 			return(
-				<MenuItem key={i} eventKey={imgArr.name} 
+				<MenuItem key={i} eventKey={imgArr.name}
 					onClick={this.handleSelect.bind(this, imgArr.name)}>{imgArr.name}</MenuItem>)
 		}, this)
 
@@ -83,7 +84,7 @@ class BooksForm extends React.Component{
 				<Col xs={12} sm={6}>
 					<Panel>
 						 <InputGroup>
-					        <FormControl type="text" ref="images" value={this.state.img} />
+					        <FormControl type="text" ref="image" value={this.state.img} />
 					        <DropdownButton
 					          componentClass={InputGroup.Button}
 					          id="input-dropdown-addon"

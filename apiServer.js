@@ -113,15 +113,16 @@ Books.findOneAndUpdate(query, update,
 })
 
 // --->>> GET BOOKS IMAGES API <<<------
+
 app.get('/images', function(req, res){
   const imgFolder = __dirname + '/public/images/';
   // REQUIRE FILE SYSTEM
   const fs = require('fs');
   //READ ALL FILES IN THE DIRECTORY
   fs.readdir(imgFolder, function(err, files){
-  if(err){
-    return console.error(err);
-  }
+    if(err){
+      return console.error(err);
+    }
   //CREATE AN EMPTY ARRAY
   const filesArr = [];
   // ITERATE ALL IMAGES IN THE DIRECTORY AND ADD TO THE THE ARRAY
