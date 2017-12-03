@@ -1,5 +1,5 @@
 # ShoppingCart Application
-This is a application demonstrating a shopping cart.
+This is an application demonstrating a shopping cart.
 Technologies used:
 MongoDB, ExpressJS, ReactJS, Redux, NodeJS
 
