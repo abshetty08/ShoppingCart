@@ -2,6 +2,7 @@
 import React from 'react';
 import {Nav, NavItem, Navbar, Badge} from 'react-bootstrap';
 
+
 class Menu extends React.Component{
 	render(){
 		return(

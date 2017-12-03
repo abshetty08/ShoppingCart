@@ -2,12 +2,13 @@
 
 //BOOKS REDUCERS
 export function booksReducers (state={
-	books:[]
+	books:[ ]
 }, action){
 	switch(action.type){
 		
-		case "GET_BOOK":
-		return {...state, books: [...action.payload]}
+		case "GET_BOOKS":
+		return {...state, books:[...action.payload]}
+
 		break;
 
 		case "POST_BOOK":

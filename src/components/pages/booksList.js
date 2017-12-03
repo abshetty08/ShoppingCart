@@ -2,8 +2,8 @@
 
 import React from 'react';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
 import {getBooks} from '../../actions/booksActions';
+import {bindActionCreators} from 'redux';
 import {Carousel, Grid, Col, Row, Button} from 'react-bootstrap';
 
 import BookItem from './bookItem';
@@ -19,7 +19,6 @@ class BooksList extends React.Component{
 
 	render(){
 		const booksList =  this.props.books.map(function(booksArr){
-			console.log("HOW BOOKS ARRAY LOOKS LIKE? -->>>>: ", booksArr);
 			return(
 				<Col xs={12} sm={6} md={4} key={booksArr._id}>
 				<BookItem
