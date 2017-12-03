@@ -11419,7 +11419,6 @@ function postBooks(book) {
 	return function (dispatch) {
 		_axios2.default.post("/api/books", book).then(function (response) {
 			dispatch({ type: "POST_BOOK", payload: response.data });
-			console.log(payload);
 		}).catch(function (err) {
 			dispatch({ type: "POST_BOOK_REJECTED",
 				payload: "there was an error while posting a new book" });

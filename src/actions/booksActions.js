@@ -21,7 +21,6 @@ export function postBooks(book){
 		axios.post("/api/books", book)
 		.then(function(response){
 			dispatch({type:"POST_BOOK", payload:response.data})
-			console.log(payload);
 		})
 		.catch(function(err){
 			dispatch({type:"POST_BOOK_REJECTED",
