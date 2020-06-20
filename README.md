@@ -1,7 +1,7 @@
 # ShoppingCart Application
 This is an application demonstrating a shopping cart.
 Technologies used:
-MongoDB, ExpressJS, ReactJS, Redux, NodeJS
+MongoDB, ExpressJS, ReactJS, Redux, NodeJS.
 
 To install:
 1. Download/Clone the project.
